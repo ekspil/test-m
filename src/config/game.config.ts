@@ -1,8 +1,9 @@
 
 export const GameConfig = {
+  tickIntervalMs: 1000,
   nearRadius: 3,
-  dropDeleteTicks: 15,
-  storageDelayMs: 500,
+  dropDeleteTicks: 10,
+  storageDelayMs: 100,
   healthMax: 100,
   armorMax: 100,
   ammoMax: 100,

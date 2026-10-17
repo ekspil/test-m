@@ -26,9 +26,9 @@ export class CoreService {
       await this.storage.addPlayer({
         id: i,
         position: [i, i],
-        health: 55,
-        armor: 55,
-        ammo: 20,
+        health: 2,
+        armor: 0,
+        ammo: 0,
         visible: false,
         persistedEffects: []
       })
@@ -65,8 +65,9 @@ export class CoreService {
   }
 
   async dropItem(playerId: number, itemId: number): Promise<void> {
+    if (this.queueOfOperationsWithItems.has(itemId)) throw new Error('Кто то начал взаимодействовать с предметом раньше вас')
+
     try {
-      if (this.queueOfOperationsWithItems.has(itemId)) throw new Error('Кто то начал взаимодействовать с предметом раньше вас')
       this.queueOfOperationsWithItems.add(itemId)
 
       const player = await this.storage.getPlayer(playerId)
@@ -99,8 +100,9 @@ export class CoreService {
   }
 
   async pickupItem(playerId: number, itemId: number): Promise<void> {
+    if (this.queueOfOperationsWithItems.has(itemId)) throw new Error('Кто то начал взаимодействовать с предметом раньше вас')
+
     try {
-      if(this.queueOfOperationsWithItems.has(itemId)) throw new Error('Кто то начал взаимодействовать с предметом раньше вас')
       this.queueOfOperationsWithItems.add(itemId)
 
       const player = await this.storage.getPlayer(playerId)
@@ -128,9 +130,9 @@ export class CoreService {
   }
 
   async useItem(playerId: number, itemId: number): Promise<void> {
+    if (this.queueOfOperationsWithItems.has(itemId)) throw new Error('Кто то начал взаимодействовать с предметом раньше вас')
 
     try {
-      if (this.queueOfOperationsWithItems.has(itemId)) throw new Error('Кто то начал взаимодействовать с предметом раньше вас')
       this.queueOfOperationsWithItems.add(itemId)
 
       const player = await this.storage.getPlayer(playerId)

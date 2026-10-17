@@ -1,0 +1,16 @@
+{
+  "name": "test-m",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/src/index.js",
+    "test": "npm run build && node --test dist/test/items.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^6.0.3"
+  },
+  "private": true
+}

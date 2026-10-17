@@ -1,8 +1,8 @@
-import { distance } from '../utils/distance'
-import type {IPlayer, Position} from '../core/core.types'
-import { BaseItem } from './base.item'
-import { ItemType } from './item.types'
-import { GameConfig } from "../config/game.config";
+import { distance } from '../../utils/distance'
+import type {IPlayer, Position} from '../../core/core.types'
+import { BaseItem } from '../base.item'
+import { ItemType } from '../item.types'
+import { GameConfig } from "../../config/game.config";
 
 export class Flare extends BaseItem {
   constructor() {

@@ -1,9 +1,9 @@
-import { Armor } from './armor.item'
-import { Flare } from './flare.item'
+import { Armor } from './itemTypes/armor.item'
+import { Flare } from './itemTypes/flare.item'
 import { BaseItem } from './base.item'
 import { ItemType } from './item.types'
-import { Medkit } from './medkit.item'
-import { Ammo } from "./ammo.item";
+import { Medkit } from './itemTypes/medkit.item'
+import { Ammo } from "./itemTypes/ammo.item";
 
 export class ItemService {
   private readonly ExecutionEntities = new Map<ItemType, BaseItem>()

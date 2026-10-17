@@ -33,7 +33,7 @@ export class TempStorage {
 
   async getInventory(playerId: number): Promise<IItemInstance[]> {
     await wait()
-    return [...this.items.filter(item => item.playerId !== playerId)]
+    return [...this.items.filter(item => item.playerId === playerId)]
   }
 
   async addItem(playerId: number, item: IItemInstance): Promise<void> {
