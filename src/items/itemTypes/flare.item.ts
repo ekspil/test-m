@@ -12,16 +12,26 @@ export class Flare extends BaseItem {
   onDrop( position: Position, players: IPlayer[], currentTick: number): void {
     for (const player of players) {
       if (distance(player.position, position) > GameConfig.nearRadius) continue
-      player.persistedEffects.push({
-        type: this.type,
-        expirationTick: currentTick + GameConfig.flareTicks
-      })
+
+      const exist = player.persistedEffects.find(i=> i.type === this.type)
+
+      if (exist) {
+        exist.expirationTick = currentTick + GameConfig.flareTicks
+      }
+      else {
+        player.persistedEffects.push({
+          type: this.type,
+          expirationTick: currentTick + GameConfig.flareTicks
+        })
+
+      }
 
       player.visible = true
     }
   }
 
   onEnd(player: IPlayer): void {
+
     player.visible = false
   }
 }

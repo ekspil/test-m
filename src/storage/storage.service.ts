@@ -22,13 +22,15 @@ export class TempStorage {
 
   async getPlayers(): Promise<IPlayer[]> {
     await wait()
-    return [...this.players]
+    return this.players.map(i=> {
+      return {...i}
+    })
   }
   async getPlayer(id: number): Promise<IPlayer | null> {
     await wait()
     const player = this.players.find(i=>i.id === id)
     if(!player) return null
-    return {...player}
+    return {...player, position: [...player.position]}
   }
 
   async getInventory(playerId: number): Promise<IItemInstance[]> {

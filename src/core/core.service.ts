@@ -44,7 +44,8 @@ export class CoreService {
   ): Promise<IItemInstance | undefined> {
     try {
 
-      await this.storage.getPlayer(playerId)
+      const player = await this.storage.getPlayer(playerId)
+      if(!player) throw new Error("Игрок не найден")
 
       this.items.getExecutionEntity(itemType)
 
