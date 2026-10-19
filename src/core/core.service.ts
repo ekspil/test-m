@@ -19,6 +19,8 @@ export class CoreService {
 
   }
 
+
+
   async addTestPlayers(
 
   ): Promise<void> {
@@ -162,7 +164,14 @@ export class CoreService {
 
 
   async tick(): Promise<void> {
+
+    // Тут убрать бы асинхронные операции все из тика.
+    // Сессии игроков хранить в мапе, при onConnect их добавлять в мапу, при onDisconnect их удалять и сохранять в бд.
+    // Эффекты так же хранить и обрабатывать в памяти.
+    // Но в рамках тестового задания эмулировать полный цикл работы игрового сервера очень долго, поэтому так.
+
     this.currentTick += 1
+
     await this.storage.removeExpiredItems(this.currentTick)
 
     const players = await this.storage.getPlayers()
